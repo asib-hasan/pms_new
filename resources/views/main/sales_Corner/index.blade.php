@@ -21,7 +21,7 @@
                                     <div style="margin-top: 20px;" class="table-responsive">
                                         <input type="hidden" id="sub_total_price" value=""/>
                                         <div class="table-responsive-md" id="sales_table_data">
-                                                <table class="table table-bordered">
+                                                <table class="table table-bordered table-sm">
                                                     <thead>
                                                         <tr>
                                                             <th style="background-color: #ddd">#</th>
@@ -45,10 +45,9 @@
                                                             <td colspan="2"><span id="total_sales_subtotal"></span></td>
                                                         </tr>
                                                         <tr>
-                                                            <th colspan="6"
-                                                                style="text-align: right">Discount Type</th>
+                                                            <th colspan="6" style="text-align: right">Discount Type</th>
                                                             <td colspan="2">
-                                                                <select class="form-control" id="discount_type" name="discount_type">
+                                                                <select style="border:1px solid #ddd;border-radius: 5px;padding:5px" id="discount_type" name="discount_type">
                                                                     <option value="0">-- select --</option>
                                                                     <option value="1">Flat Rate</option>
                                                                     <option value="2">Percent</option>
@@ -58,7 +57,7 @@
                                                         <tr>
                                                             <th colspan="6" style="text-align: right">Discount&nbsp;({{ $currency }})</th>
                                                             <td colspan="2">
-                                                                <input class="form-control input-sm" style="width: 100%;" type="number" min="1"/>
+                                                                <input style="border:1px solid #ddd;border-radius: 5px;padding:5px" type="number" min="1"/>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -68,7 +67,7 @@
                                                         <tr>
                                                             <th colspan="6" style="text-align: right">Total Paid&nbsp;({{ $currency }})</th>
                                                             <td colspan="2">
-                                                                <input class="form-control input-sm" style="width: 100%;" type="number" min="1"/>
+                                                                <input class="input-sm" style="border:1px solid #ddd;border-radius: 5px;padding:5px" type="number" min="1"/>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -82,9 +81,11 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                        <div class="col-md-6" style="border: 1px solid #eee;padding: 5px">
+                                    </div>
+                                        <div class="row">
+                                        <div class="col-md-6 mt-3">
                                             <h4 style="color: maroon;text-align: center"><i class="fa fa-search"></i>
-                                                Search From Existing Customer <small>optional</small></h4>
+                                                Search From Existing Customer <small> (optional)</small></h4>
                                             <select class="form-control select2_demo_1" id="old_customer" name="old_customer">
                                                 <option value="">-- select customer --</option>
                                                 @foreach($customer_list AS $customer)
@@ -92,8 +93,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-md-6" style="border: 1px solid #eee;padding: 5px">
-                                            <h4 style="color: green;text-align: center"><i class="fa fa-plus-circle"></i> Add New Customer<small>optional</small></h4>
+                                        <div class="col-md-6 mt-3">
+                                            <h4 style="color: green;text-align: center"><i class="fa fa-plus-circle"></i> Add New Customer<small> (optional)</small></h4>
                                             <form role="form" class="form-inline">
                                                 <div class="form-group">
                                                     <input type="text" maxlength="100" placeholder="Enter name" id="customer_name" name="customer_name" class="form-control">
@@ -103,10 +104,11 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        </div>
                                         <div class="clearfix"></div>
                                         <hr>
-                                        <input type="checkbox" id="is_invoice" name="is_invoice" value="1"> Do you want to print invoice?
-                                        <button class="btn btn-primary pull-right" type="button" return="false" onclick="javascript:complete_sale();" id="save_data" name="save_data"><i class="fa fa-check"></i> Complete Order</button>
+                                        <input type="checkbox" id="is_invoice" class="mt-1" name="is_invoice" value="1"> Do you want to print invoice?
+                                        <button class="btn btn-primary float-right mt-1" type="button" onclick="javascript:complete_sale();" id="save_data" name="save_data"><i class="fa fa-check"></i> Complete Order</button>
                                     </div>
                                 </div>
                             </div>

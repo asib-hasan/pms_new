@@ -54,38 +54,38 @@ function generate_table(temp_sales_cart_obj, temp_sales_sub_total_obj) {
 
     var tableHTML = '';
     if (countItem > 0) {
-        tableHTML += '<table class="table table-responsive table-bordered">';
+        tableHTML += '<table class="table table-bordered table-sm">';
         tableHTML += '<thead>';
         tableHTML += '<tr>';
-        tableHTML += '<th style="width: 5%">#</th>';
-        tableHTML += '<th style="width: 25%">Item Name</th>';
-        tableHTML += '<th style="width: 10%">Expire Date</th>';
-        tableHTML += '<th style="width: 15%">In Stock</th>';
-        tableHTML += '<th style="width: 10%">Sell Qty</th>';
-        tableHTML += '<th style="width: 15%">Sell Price (৳)</th>';
-        tableHTML += '<th style="width: 15%">Total Price (৳)</th>';
-        tableHTML += '<th style="width: 5%">Action</th>';
+        tableHTML += '<th style="background-color: #ddd">#</th>';
+        tableHTML += '<th style="background-color: #ddd">Item Name</th>';
+        tableHTML += '<th style="background-color: #ddd">Expire Date</th>';
+        tableHTML += '<th style="background-color: #ddd">In Stock</th>';
+        tableHTML += '<th style="background-color: #ddd">Sell Qty</th>';
+        tableHTML += '<th style="background-color: #ddd">Sell Price (৳)</th>';
+        tableHTML += '<th style="background-color: #ddd">Total Price (৳)</th>';
+        tableHTML += '<th style="background-color: #ddd">Action</th>';
         tableHTML += '</tr>';
         tableHTML += '</thead>';
 
         tableHTML += '<tbody id="temp_table_body">';
         $.each(temp_sales_cart_obj, function (key, order) {
             tableHTML += '<tr id="itemRow_' + order.temp_order_id + '">';
-            tableHTML += '<td style="width: 5%">' + countRow + '</td>';
-            tableHTML += '<td style="width: 25%">' + order.temp_order_item_name + '</td>';
-            tableHTML += '<td style="width: 10%">' + order.temp_order_item_expire_date + '</td>';
+            tableHTML += '<td>' + countRow + '</td>';
+            tableHTML += '<td>' + order.temp_order_item_name + '</td>';
+            tableHTML += '<td>' + order.temp_order_item_expire_date + '</td>';
 
             // Access item_quantity directly from the item_info relationship
             if (order.item_info) {
-                tableHTML += '<td style="width: 15%">' + order.item_info.item_quantity + '</td>';
+                tableHTML += '<td>' + order.item_info.item_quantity + '</td>';
             } else {
-                tableHTML += '<td style="width: 15%">N/A</td>'; // Handle case where item_info is null
+                tableHTML += '<td>N/A</td>'; // Handle case where item_info is null
             }
 
-            tableHTML += '<td style="width: 10%"><input class="form-control input-sm" onchange="javascript:change_quantity(' + order.temp_order_id + ',' + order.temp_order_item_id + ',' + order.temp_order_item_sell_price + ',' + order.temp_order_item_buy_price + ')" id="temp_order_item_quantity_' + order.temp_order_id + '" type="number" min="1" value="' + order.temp_order_qty + '" /></td>';
-            tableHTML += '<td style="width: 15%">' + order.item_info?.item_sell_price + '</td>'; // Use optional chaining for safety
-            tableHTML += '<td style="width: 15%"><span id="item_total_price_' + order.temp_order_id + '">' + order.temp_order_total + '</span></td>'; // Use optional chaining for safety
-            tableHTML += '<td style="width: 5%"><a href="javascript:void(0);" style="color: #9b1b25; font-size:15px;" onclick="javascript:delete_item(' + order.temp_order_id + ');"><i class="fa fa-trash"></i></a></td>';
+            tableHTML += '<td><input style="border:1px solid #ddd;border-radius: 5px;padding:5px" onchange="javascript:change_quantity(' + order.temp_order_id + ',' + order.temp_order_item_id + ',' + order.temp_order_item_sell_price + ',' + order.temp_order_item_buy_price + ')" id="temp_order_item_quantity_' + order.temp_order_id + '" type="number" min="1" value="' + order.temp_order_qty + '" /></td>';
+            tableHTML += '<td>' + order.item_info?.item_sell_price + '</td>'; // Use optional chaining for safety
+            tableHTML += '<td><span id="item_total_price_' + order.temp_order_id + '">' + order.temp_order_total + '</span></td>'; // Use optional chaining for safety
+            tableHTML += '<td><a href="javascript:void(0);" style="color: #9b1b25; font-size:15px;" onclick="javascript:delete_item(' + order.temp_order_id + ');"><i class="fa fa-trash"></i></a></td>';
             tableHTML += '</tr>';
             countRow++;
         });
@@ -93,10 +93,10 @@ function generate_table(temp_sales_cart_obj, temp_sales_sub_total_obj) {
         tableHTML += '</tbody>';
         tableHTML += '<tfoot>';
         tableHTML += '<tr><th colspan="6" style="text-align: right">Subtotal (৳)</th><td colspan="2"><span id="total_sales_subtotal">' + temp_sales_sub_total_obj + '</span></td></tr>';
-        tableHTML += '<tr><th colspan="6" style="text-align: right">Discount Type</th><td colspan="2"><select class="form-control" id="discount_type" name="discount_type" onchange="javascript:check_discount_type(event, this.value);"><option value="0">-- Choose --</option><option value="1">Flat Rate</option><option value="2">Percent</option></select></td></tr>';
-        tableHTML += '<tr><th colspan="6" style="text-align: right">Discount&nbsp;(৳)</th><td colspan="2"><input class="form-control" id="discount_price" style="width: 100%;" type="number" min="1" onkeyup="javascript:discount_calculate(this.value);" /></td></tr>';
+        tableHTML += '<tr><th colspan="6" style="text-align: right">Discount Type</th><td colspan="2"><select style="border:1px solid #ddd;border-radius: 5px;padding:5px" id="discount_type" name="discount_type" onchange="javascript:check_discount_type(event, this.value);"><option value="0">-- Choose --</option><option value="1">Flat Rate</option><option value="2">Percent</option></select></td></tr>';
+        tableHTML += '<tr><th colspan="6" style="text-align: right">Discount&nbsp;(৳)</th><td colspan="2"><input style="border:1px solid #ddd;border-radius: 5px;padding:5px" id="discount_price" type="number" min="1" onkeyup="javascript:discount_calculate(this.value);" /></td></tr>';
         tableHTML += '<tr><th colspan="6" style="text-align: right">Gross Total&nbsp;(৳)</th><td colspan="2"><span id="gross_total">' + temp_sales_sub_total_obj + '</span></td></tr>';
-        tableHTML += '<tr><th colspan="6" style="text-align: right">Total Paid&nbsp;(৳)</th><td colspan="2"><input class="form-control" id="total_paid" style="width: 100%;" type="number" min="1" onkeyup="javascript:due_calculate(this.value);" /></td></tr>';
+        tableHTML += '<tr><th colspan="6" style="text-align: right">Total Paid&nbsp;(৳)</th><td colspan="2"><input style="border:1px solid #ddd;border-radius: 5px;padding:5px" id="total_paid" type="number" min="1" onkeyup="javascript:due_calculate(this.value);" /></td></tr>';
         tableHTML += '<tr><th colspan="6" style="text-align: right">Due Amount&nbsp;(৳)</th><td colspan="2"><span id="due_total">' + temp_sales_sub_total_obj + '</span></td></tr>';
         tableHTML += '<tr><th colspan="6" style="text-align: right">Return Amount&nbsp;(৳)</th><td colspan="2"><span id="return_total"></span></td></tr>';
         tableHTML += '</tfoot>';
