@@ -1,22 +1,21 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Items Information <a href="{{ url('item/add') }}" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Items Information <a href="{{ url('item/add') }}" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="border: 0px">
+                                <div class="modal-content" >
                                     <form method="GET" action="{{ url('item') }}">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Advance Search For Items
+                                        <div class="card">
+                                            <div class="card-header font-weight-bold">Advance Search For Items
                                                 <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button>
                                             </div>
-                                            <div class="panel-body">
+                                            <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -33,11 +32,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>Item Info</th>
@@ -101,11 +100,11 @@
                                                                 <form method="POST" action="{{ url('/item/update/sell/price') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="item_id" value="{{ $item->item_id }}"/>
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Update Sell Price For<b style="color: maroon"> {{ $item->item_name }}</b>
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Update Sell Price For<b style="color: maroon"> {{ $item->item_name }}</b>
                                                                             <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button>
                                                                         </div>
-                                                                        <div class="panel-body">
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -124,15 +123,15 @@
                                                     </div>
                                                     <div class="modal fade" id="load_{{ $item->item_id }}" role="dialog">
                                                         <div class="modal-dialog modal-md">
-                                                            <div class="modal-content" style="border: 0px">
+                                                            <div class="modal-content" >
                                                                 <form method="POST" action="{{ url('/item/update/quantity') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="item_id" value="{{ $item->item_id }}"/>
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Load More Quantity For <b style="color: maroon">{{ $item->item_name }}</b>
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Load More Quantity For <b style="color: maroon">{{ $item->item_name }}</b>
                                                                             <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button>
                                                                         </div>
-                                                                        <div class="panel-body">
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">

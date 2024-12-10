@@ -26,4 +26,8 @@ class PurchaseBillPaid extends Model
     protected $guarded = [
         'item_category_id',
     ];
+
+    public function admin_info(){
+        return $this->belongsTo(User::class, 'created_by','admin_id');
+    }
 }

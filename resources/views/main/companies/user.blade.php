@@ -1,19 +1,17 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
-
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Contact Information For <span style="color: maroon">{{ $company_info->item_company_name }}</span> <a href="javascript:void(0)" data-toggle="modal" data-target="#add_company_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a></div>
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Contact Information For <span style="color: maroon">{{ $company_info->item_company_name }}</span> <a href="javascript:void(0)" data-toggle="modal" data-target="#add_company_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a></div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -41,9 +39,9 @@
                                                                 <form method="POST" action="{{ url('/company/user/delete') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="contact_info_id" value="{{ $contact->contact_info_id }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading"><i class="fa fa-warning"></i> Delete Company User <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold"><i class="fa fa-warning"></i> Delete Company User <button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="alert alert-warning">
@@ -66,44 +64,42 @@
                                                                 <form method="POST" action="{{ url('/company/user/update') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="contact_info_id" value="{{ $contact->contact_info_id }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Update Company's Contact Person Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                    <div class="card-header font-weight-bold">Update Company's Contact Person Information <button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="contact_info_name">Name<b class="required_mark">*</b></label>
-                                                                                            <input type="text" maxlength="100" class="form-control" name="contact_info_name" value="{{ $contact->contact_info_name }}" placeholder="Enter name" required />
-                                                                                        </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="contact_info_name">Name<b class="required_mark">*</b></label>
+                                                                                        <input type="text" maxlength="100" class="form-control" name="contact_info_name" value="{{ $contact->contact_info_name }}" placeholder="Enter name" required />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
-                                                                                            <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ $contact->contact_info_phone }}" placeholder="Enter phone" required />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
+                                                                                        <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ $contact->contact_info_phone }}" placeholder="Enter phone" required />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="contact_info_email">Email</label>
-                                                                                            <input type="email" maxlength="100" class="form-control" name="contact_info_email" value="{{ $contact->contact_info_email }}" placeholder="Enter email" />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="contact_info_email">Email</label>
+                                                                                        <input type="email" maxlength="100" class="form-control" name="contact_info_email" value="{{ $contact->contact_info_email }}" placeholder="Enter email" />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="contact_info_fax">Fax</label>
-                                                                                            <input type="text" maxlength="100" class="form-control" name="contact_info_fax" value="{{ $contact->contact_info_fax }}" placeholder="Enter fax" />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="contact_info_fax">Fax</label>
+                                                                                        <input type="text" maxlength="100" class="form-control" name="contact_info_fax" value="{{ $contact->contact_info_fax }}" placeholder="Enter fax" />
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <label for="contact_info_designation">Designation</label>
-                                                                                            <input type="text" maxlength="100" class="form-control" name="contact_info_designation" value="{{ $contact->contact_info_designation }}" placeholder="Enter designation" />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="contact_info_designation">Designation</label>
+                                                                                        <input type="text" maxlength="100" class="form-control" name="contact_info_designation" value="{{ $contact->contact_info_designation }}" placeholder="Enter designation" />
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
-                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -128,44 +124,42 @@
                                                 <form method="POST" action="{{ url('/company/user/store') }}">
                                                     @csrf
                                                     <input type="hidden" name="contact_info_company_id" value="{{ $company_info->item_company_id }}" />
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading"><i class="fa fa-plus"></i> Add New Company User For <span style="color: maroon">{{ $company_info->item_company_name }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold"><i class="fa fa-plus"></i> Add New Company User For <span style="color: maroon">{{ $company_info->item_company_name }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="contact_info_name">Name<b class="required_mark">*</b></label>
-                                                                            <input type="text" maxlength="100" class="form-control" name="contact_info_name" value="{{ old('contact_info_name') }}" placeholder="Enter name" required />
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="contact_info_name">Name<b class="required_mark">*</b></label>
+                                                                        <input type="text" maxlength="100" class="form-control" name="contact_info_name" value="{{ old('contact_info_name') }}" placeholder="Enter name" required />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
-                                                                            <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ old('contact_info_phone') }}" placeholder="Enter phone" required />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
+                                                                        <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ old('contact_info_phone') }}" placeholder="Enter phone" required />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="contact_info_email">Email</label>
-                                                                            <input type="email" maxlength="100" class="form-control" name="contact_info_email" value="{{ old('contact_info_email') }}" placeholder="Enter email" />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="contact_info_email">Email</label>
+                                                                        <input type="email" maxlength="100" class="form-control" name="contact_info_email" value="{{ old('contact_info_email') }}" placeholder="Enter email" />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="contact_info_fax">Fax</label>
-                                                                            <input type="text" maxlength="20" class="form-control" name="contact_info_fax" value="{{ old('contact_info_fax') }}" placeholder="Enter fax" />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="contact_info_fax">Fax</label>
+                                                                        <input type="text" maxlength="20" class="form-control" name="contact_info_fax" value="{{ old('contact_info_fax') }}" placeholder="Enter fax" />
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label for="contact_info_designation">Designation</label>
-                                                                            <input type="text" maxlength="100" class="form-control" name="contact_info_designation" value="{{ old('contact_info_designation') }}" placeholder="Enter designation" />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="contact_info_designation">Designation</label>
+                                                                        <input type="text" maxlength="100" class="form-control" name="contact_info_designation" value="{{ old('contact_info_designation') }}" placeholder="Enter designation" />
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
                                                                 </div>
                                                             </div>
                                                         </div>

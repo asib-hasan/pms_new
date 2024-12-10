@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\Expense;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -33,7 +34,7 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'expense_criteria' => 'required|max:100|unique:item_category,item_category_name',
+            'expense_criteria' => 'required|max:100',
             'expense_amount' => 'required|numeric|min:0',
             'expense_date' => 'required|date',
         ];
@@ -60,6 +61,7 @@ class ExpenseController extends Controller
                     'expense_criteria' => $request->expense_criteria,
                     'expense_amount' => $request->expense_amount,
                     'expense_date' => $request->expense_date,
+                    'created_by' => Auth::user()->admin_id,
                 ]);
             });
             return redirect()->back()->with('success', 'Expense information saved successfully');
@@ -102,6 +104,7 @@ class ExpenseController extends Controller
                         'expense_criteria' => $request->expense_criteria,
                         'expense_amount' => $request->expense_amount,
                         'expense_date' => $request->expense_date,
+                        'updated_by' => Auth::user()->admin_id,
                     ]);
                 });
                 return redirect()->back()->with('success', 'Expense information updated successfully');

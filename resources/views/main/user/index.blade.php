@@ -1,20 +1,19 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-md-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">System Users Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
+                    <div class="card">
+                        <div class="card-header">System Users Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="border: 0px">
+                                <div class="modal-content">
                                     <form method="GET" action="{{ url('user') }}">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Advance Search For System Users <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                            <div class="panel-body">
+                                        <div class="card">
+                                            <div class="card-header font-weight-bold">Advance Search For System Users <button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                                            <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -30,13 +29,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Email</th>
@@ -61,30 +60,29 @@
                                                                     <form method="POST" action="{{ url('user/update') }}">
                                                                         @csrf
                                                                         <input type="hidden" name="admin_id" value="{{ $user->admin_id }}" />
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">Update User Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                            <div class="panel-body">
+                                                                        <div class="card">
+                                                                            <div class="card-header font-weight-bold">Update User Information <button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                                                                            <div class="card-body">
                                                                                 <div class="row">
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <div class="form-group">
                                                                                                 <label>Name<b class="required_mark">*</b></label>
                                                                                                 <input type="text" class="form-control" name="admin_name" value="{{ $user->admin_name }}" placeholder="Enter name" required />
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <div class="form-group">
                                                                                                 <label>Email</label>
                                                                                                 <input type="email" class="form-control" name="admin_email" value="{{ $user->admin_email }}" placeholder="Enter email" />
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <div class="form-group">
                                                                                                 <label>Phone<b class="required_mark">*</b></label>
                                                                                                 <input type="text" maxlength="11" class="form-control" required name="admin_phone" value="{{ $user->admin_phone }}" placeholder="Enter phone" />
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <div class="form-group">
                                                                                                 <label for="admin_type">Type<b class="required_mark">*</b></label>
                                                                                                 <select class="form-control" name="admin_type" required>
@@ -94,7 +92,7 @@
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <div class="form-group">
                                                                                                 <label for="admin_status">Status<b class="required_mark">*</b></label>
                                                                                                 <select class="form-control" name="admin_status" required>
@@ -107,7 +105,6 @@
                                                                                         <div class="col-md-12">
                                                                                             <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
                                                                                         </div>
-                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -130,39 +127,38 @@
                                     </div>
                                     <div id="add_user" class="modal fade" role="dialog">
                                         <div class="modal-dialog modal-md">
-                                            <div class="modal-content" style="border: 0px;">
+                                            <div class="modal-content">
                                                 <form method="POST" action="{{ url('user/store') }}">
                                                     @csrf
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Add New User Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold">Add New User Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label>Name<b class="required_mark">*</b></label>
                                                                             <input type="text" class="form-control" name="admin_name" value="{{ old('name') }}" placeholder="Enter name" required />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="admin_email">Email</label>
                                                                             <input type="email" class="form-control" name="admin_email" value="{{ old('email') }}" placeholder="Enter email" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="phone">Phone<b class="required_mark">*</b></label>
                                                                             <input type="text" maxlength="11" class="form-control" required name="admin_phone" value="{{ old('phone') }}" placeholder="Enter phone" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="password">Password<b class="required_mark">*</b></label>
                                                                             <input type="password" maxlength="50" minlength="6" class="form-control" name="admin_password" value="" placeholder="Enter password" required />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label>Type<b class="required_mark">*</b></label>
                                                                             <select class="form-control" name="admin_type" required>
@@ -172,7 +168,7 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="admin_status">Status<b class="required_mark">*</b></label>
                                                                             <select class="form-control" name="admin_status" required>
@@ -185,7 +181,6 @@
                                                                     <div class="col-md-12">
                                                                         <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
                                                                     </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,6 +198,6 @@
     </div>
 
     <script>
-        $('#users').addClass('active');
+        $('#userstx').addClass('active');
     </script>
 @endsection

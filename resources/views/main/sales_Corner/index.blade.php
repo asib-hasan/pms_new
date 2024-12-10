@@ -11,7 +11,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <select class="form-control select2" style="width: 100%" id="item_name_type" name="item_name_type" onchange="javascript:check_click_item(event, this.value);">
+                                        <select class="js-example-basic-single w-100" style="width: 100%" id="item_name_type" name="item_name_type" onchange="javascript:check_click_item(event, this.value);">
                                             <option value="">-- select item from list and click on the item --</option>
                                             @foreach($item_list AS $item)
                                                 <option value="{{ $item->item_id }}">{{ $item->item_name }}(Price: {{ $item->item_sell_price }})</option>
@@ -41,7 +41,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th colspan="6" style="text-align: right">Subtotal&nbsp; {{ $currency }}</th>
+                                                            <th colspan="6" style="text-align: right">Subtotal&nbsp; ({{ $currency }})</th>
                                                             <td colspan="2"><span id="total_sales_subtotal"></span></td>
                                                         </tr>
                                                         <tr>
@@ -86,7 +86,7 @@
                                         <div class="col-md-6 mt-3">
                                             <h4 style="color: maroon;text-align: center"><i class="fa fa-search"></i>
                                                 Search From Existing Customer <small> (optional)</small></h4>
-                                            <select class="form-control select2_demo_1" id="old_customer" name="old_customer">
+                                            <select class="js-example-basic-single" style="width: 100%" id="old_customer" name="old_customer">
                                                 <option value="">-- select customer --</option>
                                                 @foreach($customer_list AS $customer)
                                                     <option value="{{ $customer->customer_id }}">{{ $customer->customer_name }}({{ $customer->customer_phone }})</option>
@@ -96,7 +96,7 @@
                                         <div class="col-md-6 mt-3">
                                             <h4 style="color: green;text-align: center"><i class="fa fa-plus-circle"></i> Add New Customer<small> (optional)</small></h4>
                                             <form role="form" class="form-inline">
-                                                <div class="form-group">
+                                                <div class="form-group mr-1">
                                                     <input type="text" maxlength="100" placeholder="Enter name" id="customer_name" name="customer_name" class="form-control">
                                                 </div>
                                                 <div class="form-group">
@@ -118,9 +118,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $('.select2').select2({ width: '100%' });
-    </script>
     <script>
         $('#sales_corner').addClass('active');
     </script>

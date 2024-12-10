@@ -1,21 +1,20 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-md-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Categories Information  <a href="javascript:void(0)" data-toggle="modal" data-target="#add_category" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
+                    <div class="card">
+                        <div class="card-header">Categories Information  <a href="javascript:void(0)" data-toggle="modal" data-target="#add_category" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="border: 0px">
+                                <div class="modal-content">
                                     <form method="GET" action="{{ url('categories') }}">
                                         @csrf
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Advance Search For Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                            <div class="panel-body">
+                                        <div class="card">
+                                            <div class="card-header font-weight-bold">Advance Search For Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                            <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -31,13 +30,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Category Name</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -52,13 +51,13 @@
                                                     <a href="javascript:void(0);" data-toggle="modal" data-target="#edit_{{ $category->item_category_id }}"><i class="fa fa-pencil"></i> Edit</a>
                                                     <div id="edit_{{ $category->item_category_id }}" class="modal fade" role="dialog">
                                                         <div class="modal-dialog modal-md">
-                                                            <div class="modal-content" style="border: 0px;">
+                                                            <div class="modal-content">
                                                                 <form method="POST" action="{{ url('categories/update') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="item_category_id" value="{{ $category->item_category_id }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Update Item Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Update Item Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -91,17 +90,19 @@
                                             </tbody>
                                         </table>
                                     </div>
+
                                     <div>
                                         {{ $categories_list->links() }}
                                     </div>
+
                                     <div id="add_category" class="modal fade" role="dialog">
                                         <div class="modal-dialog modal-md">
                                             <div class="modal-content" style="border: 0px">
                                                 <form method="POST" action="{{ url('categories/store') }}">
                                                     @csrf
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Add New Item Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold">Add New Item Category <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">

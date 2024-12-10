@@ -1,37 +1,34 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Purchase History For <span style="color: maroon">({{ $company_info->item_company_name }})</span> <a href="javascript:void(0)" class="btn btn-primary btn-xs btn-rounded" data-toggle="modal" data-target="#add_company_user" class=""><i class="fa fa-plus-circle"></i> Add New</a></div>
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Purchase History For <span style="color: maroon">({{ $company_info->item_company_name }})</span> <a href="javascript:void(0)" class="btn btn-primary btn-xs btn-rounded" data-toggle="modal" data-target="#add_company_user" class=""><i class="fa fa-plus-circle"></i> Add New</a></div>
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
-                                        <h4 style="font-weight: bold;color: blue;padding: 10px">
-                                            Total Purchase Amount {{ $total_purchase != "" ? number_format($total_purchase, 2, '.', '') : '0.00' }} {{ $currency }}
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
-                                        <h4 style="font-weight: bold;color: green;padding: 10px">
-                                            Total Bill Paid Amount {{ $total_paid_amount != "" ? number_format($total_paid_amount, 2, '.', '') : '0.00' }} {{ $currency }}
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
-                                        <h4 style="font-weight: bold;color: maroon;padding: 10px">
-                                            Total Due Amount {{ $total_due_amount != "" ? number_format($total_due_amount, 2, '.', '') : '0.00' }} {{ $currency }}
-                                        </h4>
-                                    </div>
+                                <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
+                                    <h4 style="font-weight: bold;color: blue;padding: 10px">
+                                        Total Purchase Amount {{ $total_purchase != "" ? number_format($total_purchase, 2, '.', '') : '0.00' }} {{ $currency }}
+                                    </h4>
+                                </div>
+                                <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
+                                    <h4 style="font-weight: bold;color: green;padding: 10px">
+                                        Total Bill Paid Amount {{ $total_paid_amount != "" ? number_format($total_paid_amount, 2, '.', '') : '0.00' }} {{ $currency }}
+                                    </h4>
+                                </div>
+                                <div class="col-md-4" style="height: 50px;border: 1px solid #F3F3F4;margin-bottom: 30px">
+                                    <h4 style="font-weight: bold;color: maroon;padding: 10px">
+                                        Total Due Amount {{ $total_due_amount != "" ? number_format($total_due_amount, 2, '.', '') : '0.00' }} {{ $currency }}
+                                    </h4>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>Date</th>
@@ -66,35 +63,33 @@
                                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#bill_{{ $obj->purchase_id }}"><i class="fa fa-history"></i> Billing History</a>
                                                     <div id="bill_{{ $obj->purchase_id }}" class="modal fade" role="dialog">
                                                         <div class="modal-dialog modal-md">
-                                                            <div class="modal-content" style="border: 0px;">
-                                                                <div class="panel panel-default">
-                                                                    <div class="panel-heading">Billing History For <span style="color: maroon">Invoice No - <?php echo $obj->purchase_invoice_no; ?></span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                    <div class="panel-body">
+                                                            <div class="modal-content" >
+                                                                <div class="card">
+                                                                    <div class="card-header font-weight-bold">Billing History For <span style="color: maroon">Invoice No - <?php echo $obj->purchase_invoice_no; ?></span> <button type="button" class="close" data-dismiss="modal" >&times;</button></div>
+                                                                    <div class="card-body">
                                                                         <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-12">
-                                                                                    @php
-                                                                                    $bill_paid = \App\Models\PurchaseBillPaid::where('bp_purchase_id',$obj->purchase_id)->orderByDesc('bp_date')->get();
-                                                                                    @endphp
-                                                                                    <table class="table table-responsive table-bordered">
-                                                                                        <thead>
-                                                                                        <tr>
-                                                                                            <th>Date</th>
-                                                                                            <th>Amount</th>
-                                                                                            <th>Paid By</th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                        @foreach($bill_paid AS $bill)
-                                                                                        <tr>
-                                                                                            <td>{{ $bill->bp_date }}</td>
-                                                                                            <td>{{ $bill->bp_amount }} {{ $currency }} </td>
-                                                                                            <td>{{ $bill->created_by }}</td>
-                                                                                        </tr>
-                                                                                        @endforeach
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                            <div class="col-md-12 table-responsive">
+                                                                                @php
+                                                                                $bill_paid = \App\Models\PurchaseBillPaid::where('bp_purchase_id',$obj->purchase_id)->orderByDesc('bp_date')->get();
+                                                                                @endphp
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <th>Date</th>
+                                                                                        <th>Amount</th>
+                                                                                        <th>Paid By</th>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    @foreach($bill_paid AS $bill)
+                                                                                    <tr>
+                                                                                        <td>{{ $bill->bp_date }}</td>
+                                                                                        <td>{{ $bill->bp_amount }} {{ $currency }} </td>
+                                                                                        <td>{{ $bill->admin_info->admin_name ?? '' }}</td>
+                                                                                    </tr>
+                                                                                    @endforeach
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -107,15 +102,15 @@
                                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#pay_bill{{ $obj->purchase_id }}" style="color: maroon"><i class="fa fa-check"></i> Pay Due Amount</a>
                                                     <div id="pay_bill{{ $obj->purchase_id }}" class="modal fade" role="dialog">
                                                         <div class="modal-dialog modal-md">
-                                                            <div class="modal-content" style="border: 0px;">
+                                                            <div class="modal-content" >
                                                                 <form method="POST" action="{{ url('/company/purchase/due/update') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="bp_purchase_id" value="{{ $obj->purchase_id }}" />
                                                                     <input type="hidden" name="bp_company_id" value="{{ $company_info->item_company_id }}" />
                                                                     <input type="hidden" name="total_due_amount" value="{{ $total_due_amount }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading"><i class="fa fa-money"></i> Pay Due Amount <i class="fa fa-angle-double-right"></i> <span style="color: maroon">Invoice No - <?php echo $obj->purchase_invoice_no; ?></span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold"><i class="fa fa-money"></i> Pay Due Amount <i class="fa fa-angle-double-right"></i> <span style="color: maroon">Invoice No - <?php echo $obj->purchase_invoice_no; ?></span> <button type="button" class="close" data-dismiss="modal" >&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="col-md-12">
@@ -156,43 +151,41 @@
                                                 <form method="POST" action="{{ url('/company/purchase/store') }}">
                                                     @csrf
                                                     <input type="hidden" name="purchase_company_id" value="{{ $company_info->item_company_id }}" />
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Add New Purchase From <span style="color: maroon"><?php echo $company_info->company_name; ?></span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold">Add New Purchase From <span style="color: maroon"><?php echo $company_info->company_name; ?></span> <button type="button" class="close" data-dismiss="modal" >&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="purchase_date">Date<b class="required_mark">*</b></label>
-                                                                            <input type="date" class="form-control" name="purchase_date" value="{{ old('purchase_date') }}" required />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="purchase_invoice_no">Invoice No<b class="required_mark">*</b></label>
-                                                                            <input type="text" maxlength="100" class="form-control" name="purchase_invoice_no" value="{{ old('purchase_invoice_no') }}" placeholder="Enter Invoice No" required />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="purchase_total_amount">Total Amount<b class="required_mark">*</b></label>
-                                                                            <input type="text" class="form-control" name="purchase_total_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ old('purchase_total_amount') }}" placeholder="Enter Total Amount" required />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="purchase_mode">Purchase Mode<b class="required_mark">*</b></label>
-                                                                            <select class="form-control" name="purchase_mode" required>
-                                                                                <option value="">-- select --</option>
-                                                                                <option value="Paid" @selected(old('purchase_mode')=='Paid')>Paid</option>
-                                                                                <option value="Due" @selected(old('purchase_mode')=='Due')>Due</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                                                                    <div class="form-group">
+                                                                        <label for="purchase_date">Date<b class="required_mark">*</b></label>
+                                                                        <input type="date" class="form-control" name="purchase_date" value="{{ old('purchase_date') }}" required />
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="purchase_invoice_no">Invoice No<b class="required_mark">*</b></label>
+                                                                        <input type="text" maxlength="100" class="form-control" name="purchase_invoice_no" value="{{ old('purchase_invoice_no') }}" placeholder="Enter Invoice No" required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="purchase_total_amount">Total Amount<b class="required_mark">*</b></label>
+                                                                        <input type="text" class="form-control" name="purchase_total_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="{{ old('purchase_total_amount') }}" placeholder="Enter Total Amount" required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="purchase_mode">Purchase Mode<b class="required_mark">*</b></label>
+                                                                        <select class="form-control" name="purchase_mode" required>
+                                                                            <option value="">-- select --</option>
+                                                                            <option value="Paid" @selected(old('purchase_mode')=='Paid')>Paid</option>
+                                                                            <option value="Due" @selected(old('purchase_mode')=='Due')>Due</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>

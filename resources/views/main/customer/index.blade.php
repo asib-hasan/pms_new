@@ -1,21 +1,20 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Customers Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_customer" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Customers Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_customer" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="border: 0px">
+                                <div class="modal-content">
                                     <form method="GET" action="{{ url('/customer') }}">
                                         @csrf
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Advance Search For Customers <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                            <div class="panel-body">
+                                        <div class="card">
+                                            <div class="card-header font-weight-bold">Advance Search For Customers <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                            <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -31,11 +30,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -77,48 +76,46 @@
                                                                 <form method="POST" action="{{ url('/customer/update') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="customer_id" value="{{ $customer->customer_id }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Update Customer Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Update Customer Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="customer_name">Name<b class="required_mark">*</b></label>
-                                                                                            <input type="text" maxlength="100" class="form-control" name="customer_name" value="{{ $customer->customer_name }}" placeholder="Enter name" required />
-                                                                                        </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="customer_name">Name<b class="required_mark">*</b></label>
+                                                                                        <input type="text" maxlength="100" class="form-control" name="customer_name" value="{{ $customer->customer_name }}" placeholder="Enter name" required />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="customer_phone">Phone<b class="required_mark">*</b></label>
-                                                                                            <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ $customer->customer_phone }}" placeholder="Enter phone" required />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="customer_phone">Phone<b class="required_mark">*</b></label>
+                                                                                        <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ $customer->customer_phone }}" placeholder="Enter phone" required />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="customer_email">Email</label>
-                                                                                            <input type="email" maxlength="50" class="form-control" name="customer_email" value="{{ $customer->customer_email }}" placeholder="Enter email" />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="customer_email">Email</label>
+                                                                                        <input type="email" maxlength="50" class="form-control" name="customer_email" value="{{ $customer->customer_email }}" placeholder="Enter email" />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="customer_address">Address</label>
-                                                                                            <input type="text" maxlength="255" class="form-control" name="customer_address" value="{{ $customer->customer_address }}" placeholder="Enter address" />
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="customer_address">Address</label>
+                                                                                        <input type="text" maxlength="255" class="form-control" name="customer_address" value="{{ $customer->customer_address }}" placeholder="Enter address" />
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label for="customer_address">Status</label>
-                                                                                            <select name="customer_status" class="form-control" required>
-                                                                                                <option value="">--Select--</option>
-                                                                                                <option value="Active" @selected($customer->customer_status == 'Active')>Active</option>
-                                                                                                <option value="Inactive" @selected($customer->customer_status == 'Inactive')>Inactive</option>
-                                                                                            </select>
-                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="customer_address">Status</label>
+                                                                                        <select name="customer_status" class="form-control" required>
+                                                                                            <option value="">--Select--</option>
+                                                                                            <option value="Active" @selected($customer->customer_status == 'Active')>Active</option>
+                                                                                            <option value="Inactive" @selected($customer->customer_status == 'Inactive')>Inactive</option>
+                                                                                        </select>
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <button type="submit" class="btn btn-primary" name="btn_edit_customer"><i class="fa fa-check"></i> Submit</button>
-                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <button type="submit" class="btn btn-primary" name="btn_edit_customer"><i class="fa fa-check"></i> Submit</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -134,9 +131,9 @@
                                                                     @csrf
                                                                     <input type="hidden" name="customer_id" value="{{ $customer->customer_id }}" />
                                                                     <input type="hidden" name="due_amount" value="{{ $total_due_amount }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Pay Due Amount <i class="fa fa-angle-double-right"></i><span style="color: maroon">Total Due {{ $currency }}&nbsp;{{ $total_due_amount }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Pay Due Amount <i class="fa fa-angle-double-right"></i><span style="color: maroon">Total Due {{ $currency }}&nbsp;{{ $total_due_amount }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -174,38 +171,36 @@
                                             <div class="modal-content" style="border: 0px;">
                                                 <form method="POST" action="{{ url('/customer/store') }}">
                                                     @csrf
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Add New Customer Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold">Add New Customer Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="customer_name">Name<b class="required_mark">*</b></label>
-                                                                            <input type="text" maxlength="100" class="form-control" name="customer_name" value="{{ old('customer_name') }}" placeholder="Enter name" required />
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="customer_name">Name<b class="required_mark">*</b></label>
+                                                                        <input type="text" maxlength="100" class="form-control" name="customer_name" value="{{ old('customer_name') }}" placeholder="Enter name" required />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="customer_phone">Phone<b class="required_mark">*</b></label>
-                                                                            <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ old('customer_phone') }}" placeholder="Enter phone" required />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="customer_phone">Phone<b class="required_mark">*</b></label>
+                                                                        <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ old('customer_phone') }}" placeholder="Enter phone" required />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="customer_email">Email</label>
-                                                                            <input type="email" maxlength="50" class="form-control" name="customer_email" value="{{ old('customer_email') }}" placeholder="Enter email" />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="customer_email">Email</label>
+                                                                        <input type="email" maxlength="50" class="form-control" name="customer_email" value="{{ old('customer_email') }}" placeholder="Enter email" />
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="customer_address">Address</label>
-                                                                            <input type="text" maxlength="255" class="form-control" name="customer_address" value="{{ old('customer_address') }}" placeholder="Enter address" />
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="customer_address">Address</label>
+                                                                        <input type="text" maxlength="255" class="form-control" name="customer_address" value="{{ old('customer_address') }}" placeholder="Enter address" />
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
                                                                 </div>
                                                             </div>
                                                         </div>

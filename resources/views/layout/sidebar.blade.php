@@ -6,20 +6,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Skydash Admin</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/select.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
@@ -42,7 +41,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ url('dashboard') }}">
                         <i class="icon-grid menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -54,7 +53,7 @@
                             <span class="menu-title">Settings</span>
                         </a>
                     </li>
-                    <li class="nav-item" id="users">
+                    <li class="nav-item" id="userstx">
                         <a class="nav-link" href="{{ url('user') }}">
                             <i class="fa fa-user menu-icon"></i>
                             <span class="menu-title">Users</span>
@@ -116,26 +115,15 @@
             </ul>
         </nav>
         @yield('content')
-{{--        <div class="main-panel">--}}
-{{--            <div class="content-wrapper">--}}
-{{--                <div class="row">--}}
-
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 </div>
 <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
-<script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-<script src="{{ asset('js/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('js/off-canvas.js') }}"></script>
+<script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
 <script src="{{ asset('js/template.js') }}"></script>
+<script src="{{ asset('js/select2.js') }}"></script>
 <script src="{{ asset('js/settings.js') }}"></script>
 <script src="{{ asset('js/todolist.js') }}"></script>
 <script src="{{ asset('js/dashboard.js') }}"></script>
-<script src="{{ asset('js/Chart.roundedBarCharts.js') }}"></script>
 </body>
 </html>

@@ -1,21 +1,20 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-md-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Expense Information  <a href="javascript:void(0)" data-toggle="modal" data-target="#add_category" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Expense Information  <a href="javascript:void(0)" data-toggle="modal" data-target="#add_category" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" style="background: black;border: 1px solid black" class="btn btn-success btn-xs btn-rounded"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="border: 0px">
+                                <div class="modal-content">
                                     <form method="GET" action="{{ url('expense') }}">
                                         @csrf
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Advance Search For Expense <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                            <div class="panel-body">
+                                        <div class="card">
+                                            <div class="card-header font-weight-bold">Advance Search For Expense <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                            <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -31,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
@@ -58,9 +57,9 @@
                                                                 <form method="POST" action="{{ url('expense/update') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="expense_id" value="{{ $expense->expense_id }}" />
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">Update Expense <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                                        <div class="panel-body">
+                                                                    <div class="card">
+                                                                        <div class="card-header font-weight-bold">Update Expense <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                                        <div class="card-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -104,9 +103,9 @@
                                             <div class="modal-content" style="border: 0px">
                                                 <form method="POST" action="{{ url('expense/store') }}">
                                                     @csrf
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Add New Expense Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
-                                                        <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="card-header font-weight-bold">Add New Expense Information <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                        <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">

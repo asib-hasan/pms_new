@@ -1,18 +1,17 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Customer Order History For <span style="color: maroon">({{ $customer_info->customer_name }})</span></div>
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Customer Order History For <span style="color: maroon">({{ $customer_info->customer_name }})</span></div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>Invoice ID</th>
@@ -28,8 +27,8 @@
                                                     <div id="order_{{ $order->cwo_order_id }}" class="modal fade" role="dialog">
                                                         <div class="modal-dialog modal-md">
                                                             <div class="modal-content" style="border: 0px">
-                                                                <div class="panel panel-default">
-                                                                    <div class="panel-heading">Order History - Invoice ID - <span style="color: maroon">{{ $order->cwo_order_id }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
+                                                                <div class="card">
+                                                                    <div class="card-header font-weight-bold">Order History - Invoice ID - <span style="color: maroon">{{ $order->cwo_order_id }}</span> <button type="button" class="close" data-dismiss="modal" style="color: #C33712;opacity: 1;">&times;</button></div>
                                                                     <div class="panel-body">
                                                                         <div class="row">
                                                                             <div class="col-md-12">

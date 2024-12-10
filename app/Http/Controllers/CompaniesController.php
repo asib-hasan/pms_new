@@ -9,6 +9,7 @@ use App\Models\PurchaseBillPaid;
 use App\Models\PurchaseInfo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -56,6 +57,7 @@ class CompaniesController extends Controller
                 Companies::insert([
                     'item_company_name' => $request->item_company_name,
                     'item_company_status' => 'Active',
+                    'created_by' => Auth::user()->admin_id,
                 ]);
             });
             return redirect()->back()->with('success', 'Company information saved successfully');
@@ -93,6 +95,7 @@ class CompaniesController extends Controller
                     Companies::where('item_company_id', $id)->update([
                         'item_company_name' => $request->item_company_name,
                         'item_company_status' => $request->item_company_status,
+                        'updated_by' => Auth::user()->admin_id,
                     ]);
                 });
                 return redirect()->back()->with('success', 'Company information updated successfully');
@@ -170,6 +173,7 @@ class CompaniesController extends Controller
                         'contact_info_phone' => $request->contact_info_phone,
                         'contact_info_fax' => $request->contact_info_fax,
                         'contact_info_designation' => $request->contact_info_designation,
+                        'created_by' => Auth::user()->admin_id,
                     ]);
                 });
                 return redirect()->back()->with('success', 'Contact information saved successfully');
@@ -325,6 +329,7 @@ class CompaniesController extends Controller
                             'bp_company_id' => $company_id,
                             'bp_amount' => $request->purchase_total_amount,
                             'bp_date' => $request->purchase_date,
+                            'created_by' => Auth::user()->admin_id,
                         ]);
                     }
                 });
@@ -382,11 +387,13 @@ class CompaniesController extends Controller
                         'bp_company_id' => $bp_company_id,
                         'bp_amount' => $request->bp_amount,
                         'bp_date' => $request->bp_date,
+                        'created_by' => Auth::user()->admin_id,
                     ]);
                     if($track == 1)
                     {
                         PurchaseInfo::where('purchase_id',$bp_purchase_id)->update([
-                           'purchase_mode' => 'Paid'
+                           'purchase_mode' => 'Paid',
+                            'updated_by' => Auth::user()->admin_id,
                         ]);
                     }
                 });
