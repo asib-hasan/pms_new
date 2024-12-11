@@ -13,7 +13,7 @@
                                     <a href="{{ url('report/sales') }}" class="btn btn-success btn-block"><i class="fa fa-bar-chart"></i> Sales Report</a>
                                 </div>
                                 <div class="col-md-3" style="height: 50px;">
-                                    <a href="{{ url('report/expense') }}" class="btn btn-primary btn-block"><i class="fa fa-money"></i> Expense Report</a>
+                                    <a href="{{ url('report/expenses') }}" class="btn btn-primary btn-block"><i class="fa fa-money"></i> Expense Report</a>
                                 </div>
                             </div>
                         </div>

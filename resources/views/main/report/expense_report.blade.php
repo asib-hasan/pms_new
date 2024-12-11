@@ -1,38 +1,43 @@
 @extends('layout.sidebar')
 @section('content')
-    <div id="page-wrapper" class="gray-bg">
-        @include('partials.topbar')
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="main-panel">
+        <div class="content-wrapper">
             <div class="row">
                 <div class="col-md-12">
                     @include('partials.alerts')
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Generate Expense Reports</div>
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Generate Expense Reports</div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-8">
                                     <form method="GET" action="{{ url('report/expense') }}">
-                                        <div class="form-group" id="data_5">
-                                            <label class="font-noraml">Choose Start & End Date</label>
-                                            <div class="input-group">
-                                                <input type="date" class="input-sm form-control" name="start_date" value="{{ $start_date }}>" placeholder="Choose start date" required/>
-                                                <span class="input-group-addon">to</span>
+                                        <div class="row">
+                                            <label class="font-label col-md-12">Choose Start & End Date</label>
+                                            <div class="col-md-3">
+                                                <input type="date" class="input-sm form-control" name="start_date" value="{{ $start_date }}" placeholder="Choose start date" required/>
+                                            </div>
+                                            <div class="col-auto mt-2">
+                                                <span>to</span>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <input type="date" class="input-sm form-control" name="end_date" value="{{ $end_date }}" placeholder="Choose end date" required/>
                                             </div>
+                                            <div class="col-md-3">
+                                                <button class="btn btn-primary mt-md-0 mt-3" type="submit" name="btn_report"><i class="fa fa-check" aria-hidden="true"></i> Get Report</button>
+                                            </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit" name="btn_report"><i class="fa fa-check" aria-hidden="true"></i> Get Report</button>
                                     </form>
                                 </div>
                                 @if ($flag == 1)
                                 <div class="col-md-4">
-                                    <div class="widget style1 lazur-bg">
+                                    <div class="bg-success card card-body">
                                         <div class="row">
-                                            <div class="col-xs-3">
+                                            <div class="col-md-3">
                                                 <i class="fa fa-bar-chart fa-4x"></i>
                                             </div>
-                                            <div class="col-xs-9 text-right">
+                                            <div class="col-md-9 text-right">
                                                 <span> Total Expenses </span>
-                                                <h2 class="font-bold" style="font-size: 22px;">{{ $currency }}&nbsp;{{ $gross_amount }}</h2>
+                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ $gross_amount }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -53,9 +58,9 @@
                                         </center>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Serial No</th>
                                                 <th>Expense Criteria</th>
                                                 <th>Total Amount</th>

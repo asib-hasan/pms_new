@@ -36,7 +36,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Email</th>

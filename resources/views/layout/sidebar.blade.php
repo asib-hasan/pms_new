@@ -2,10 +2,9 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title>MyShop</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
@@ -21,8 +20,9 @@
 <div class="container-scroller">
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo mr-5" href="{{ url('dashboard') }}">
+                <img src="{{ asset('images/logo.png') }}" height="auto" width="70px" class="mr-2" alt="logo"/>
+            </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -30,8 +30,9 @@
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                        <i class="icon-bell mx-0 font-weight-bold"> Sign out</i>
+                    <a class="nav-link" style="font-weight: bold;color: black" href="{{ url('account/settings') }}"><i class="fa fa-user-plus"></i> Account Settings</a>
+                    <a class="nav-link count-indicator" href="{{ url('logout') }}">
+                        <i class="fas fa-sign-out ml-3 font-weight-bold"></i> Sign out
                     </a>
                 </li>
             </ul>

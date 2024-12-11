@@ -11,7 +11,7 @@
                             <div class="row p-3">
                                 <div class="col-md-12">
                                     <form method="GET" action="{{ url('report/sales') }}">
-                                        <div class="row" id="data_5">
+                                        <div class="row">
                                             <label class="font-label col-md-12">Choose Start & End Date</label>
                                             <div class="col-md-3">
                                                 <input type="date" class="input-sm form-control" name="start_date" value="{{ $start_date }}" placeholder="Choose start date" required/>
@@ -22,7 +22,9 @@
                                             <div class="col-md-3">
                                                 <input type="date" class="input-sm form-control" name="end_date" value="{{ $end_date }}" placeholder="Choose end date" required/>
                                             </div>
-                                            <button class="btn btn-primary" type="submit" name="btn_report"><i class="fa fa-check" aria-hidden="true"></i> Get Report</button>
+                                            <div class="col-md-3">
+                                                <button class="btn btn-primary mt-md-0 mt-3" type="submit" name="btn_report"><i class="fa fa-check" aria-hidden="true"></i> Get Report</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -48,7 +50,7 @@
                                             </div>
                                             <div class="col-md-9 text-right">
                                                 <span> Total Sales Profit </span>
-                                                <h2 class="font-bold">{{ $currency }}&nbsp;{{ $gross_profit }}</h2>
+                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ $gross_profit }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -60,13 +62,9 @@
                                     @if($flag == 1)
                                     <div style="margin-top: 20px;border-bottom: 2px solid #eee;padding: 10px;margin-bottom: 20px">
                                         <h3 style="text-align: center;">Showing Sales Report from
-                                            <b style="color: #18A689;">
-                                                {{ $start_date }}
-                                            </b>
+                                            <b style="color: #18A689;">{{ $start_date }}</b>
                                             to
-                                            <b style="color: #18A689;">
-                                                   {{ $end_date }}
-                                            </b>
+                                            <b style="color: #18A689;">{{ $end_date }}</b>
                                         </h3>
                                         <center>
                                             <a href="{{ url('report/sales/print?start=' . $start_date . '&end=' .$end_date) }}" target="_blank" class="btn btn-primary" style=""><i class="fa fa-print"></i> Print Report</a>
@@ -76,7 +74,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Serial No</th>
                                                 <th>Item Name</th>
                                                 <th data-hide="phone">Sell Quantity</th>

@@ -4,16 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Step 2 - Store Information</title>
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
     </head>
-    <body class="gray-bg">
-        <div class="wrapper wrapper-content animated fadeIn">
-            <div class="row">
-                <div class="col-lg-6 col-lg-offset-3">
+    <body>
+        <div class="card">
+            <div class="row p-5">
+                <div class="col-lg-12 col-lg-offset-3">
                     <div class="ibox float-e-margins">
                         @include('partials.alerts')
                         <div class="ibox-title">

@@ -38,7 +38,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Item Info</th>
                                                 <th>Price Info</th>
                                                 <th>Quantity</th>

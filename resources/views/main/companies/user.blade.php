@@ -13,7 +13,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Name</th>
                                                 <th>Phone</th>
                                                 <th>Email</th>
@@ -35,7 +35,7 @@
                                                     <a href="javascript:void(0);" style="color: maroon" data-toggle="modal" data-target="#delete_{{ $contact->contact_info_id }}"><i class="fa fa-trash"></i> Delete</a>
                                                     <div id="delete_{{ $contact->contact_info_id }}" class="modal fade" role="dialog">
                                                         <div class="modal-dialog modal-sm">
-                                                            <div class="modal-content" style="border: 0px;">
+                                                            <div class="modal-content">
                                                                 <form method="POST" action="{{ url('/company/user/delete') }}">
                                                                     @csrf
                                                                     <input type="hidden" name="contact_info_id" value="{{ $contact->contact_info_id }}" />
@@ -45,11 +45,9 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="alert alert-warning">
-                                                                                        <p><span style="color: maroon;font-weight: bold">Warning: </span>Are you sure want to delete this company user? Click "Yes" to delete.</p>
+                                                                                        Are you sure want to delete this company user? Click "Yes" to delete.
                                                                                     </div>
-                                                                                    <div class="">
-                                                                                        <button type="submit" class="btn btn-primary btn-block" name="btn_delete_company_user"><i class="fa fa-check"></i> Yes, I Want</button>
-                                                                                    </div>
+                                                                                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-check"></i> Yes, I Want</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

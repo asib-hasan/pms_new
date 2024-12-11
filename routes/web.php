@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('companies',[CompaniesController::class,'index']);
     Route::post('companies/store',[CompaniesController::class,'store']);
     Route::post('companies/update',[CompaniesController::class,'update']);
-    Route::get('company/user',[CompaniesController::class,'user']);
+    Route::get('company/users',[CompaniesController::class,'user']);
     Route::post('company/user/store',[CompaniesController::class,'user_store']);
     Route::post('company/user/update',[CompaniesController::class,'user_update']);
     Route::post('company/user/delete',[CompaniesController::class,'user_delete']);
@@ -80,7 +80,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('report',[ReportController::class,'index']);
     Route::get('report/sales',[ReportController::class,'sales_report']);
     Route::get('report/sales/print',[ReportController::class,'print_sales_report']);
-    Route::get('report/expense/',[ReportController::class,'expense_report']);
+    Route::get('report/expenses/',[ReportController::class,'expense_report']);
     Route::get('report/expense/print',[ReportController::class,'expense_report_print']);
     #system settings
     Route::get('system/settings',[SystemSettingsController::class,'index']);

@@ -36,7 +36,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Company Name</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -49,7 +49,7 @@
                                                     <td>{{ $company->item_company_status }}</td>
                                                     <td>
                                                         <a href="javascript:void(0);" data-toggle="modal" data-target="#edit_{{ $company->item_company_id }}"><i class="fa fa-pencil"></i> Edit</a>
-                                                        <a href="{{ url('/company/user?id=' . $company->item_company_id) }}" style="color: blue"><i class="fa fa-user"></i> Contacts</a>
+                                                        <a href="{{ url('/company/users?id=' . $company->item_company_id) }}" style="color: blue"><i class="fa fa-user"></i> Contacts</a>
                                                         <a href="{{ url('company/purchase?id=' . $company->item_company_id) }}" style="color: green"><i class="a fa-bitcoin"></i> Purchase & Billing</a>
                                                         <div id="edit_{{ $company->item_company_id }}" class="modal fade" role="dialog">
                                                             <div class="modal-dialog modal-md">

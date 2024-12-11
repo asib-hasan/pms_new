@@ -30,7 +30,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Date</th>
                                                 <th>Invoice No</th>
                                                 <th>Total Amount</th>

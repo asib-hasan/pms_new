@@ -13,7 +13,7 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
-                                            <tr>
+                                            <tr style="background-color: #ddd">
                                                 <th>Invoice ID</th>
                                                 <th>Total Amount</th>
                                                 <th>Date</th>
@@ -34,7 +34,7 @@
                                                                             <div class="col-md-12">
                                                                                 <table class="table table-striped table-bordered table-hover">
                                                                                     <thead>
-                                                                                    <tr>
+                                                                                    <tr style="background-color: #ddd">
                                                                                         <th>Item Name</th>
                                                                                         <th>Price</th>
                                                                                         <th>Qty</th>
