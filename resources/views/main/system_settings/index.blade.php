@@ -9,7 +9,7 @@
                         <div class="card-header">
                             <h4>System Settings Information</h4>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-6">

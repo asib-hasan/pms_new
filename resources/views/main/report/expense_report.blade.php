@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <form method="GET" action="{{ url('report/expense') }}">
+                                    <form method="GET" action="{{ url('report/expenses') }}">
                                         <div class="row">
                                             <label class="font-label col-md-12">Choose Start & End Date</label>
                                             <div class="col-md-3">
@@ -30,7 +30,7 @@
                                 </div>
                                 @if ($flag == 1)
                                 <div class="col-md-4">
-                                    <div class="bg-success card card-body">
+                                    <div class="bg-success card card-body mt-3">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <i class="fa fa-bar-chart fa-4x"></i>

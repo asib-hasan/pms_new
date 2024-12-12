@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     @include('partials.alerts')
                     <div class="card mt-1">
-                        <div class="card-header">Sales Corner</div>
+                        <div class="card-header font-weight-bold">Sales Corner</div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">

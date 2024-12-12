@@ -16,12 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
+
+<style>
+    .content-wrapper{
+        padding: 1rem 1rem;
+    }
+</style>
 <body>
 <div class="container-scroller">
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo mr-5" href="{{ url('dashboard') }}">
                 <img src="{{ asset('images/logo.png') }}" height="auto" width="70px" class="mr-2" alt="logo"/>
+                <a class="navbar-brand brand-logo-mini" href="{{ url('dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"/></a>
             </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -32,10 +39,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" style="font-weight: bold;color: black" href="{{ url('account/settings') }}"><i class="fa fa-user-plus"></i> Account Settings</a>
                     <a class="nav-link count-indicator" href="{{ url('logout') }}">
-                        <i class="fas fa-sign-out ml-3 font-weight-bold"></i> Sign out
+                        <i class="fas fa-sign-out ml-3 font-weight-bold"></i>
                     </a>
                 </li>
             </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
         </div>
     </nav>
     <div class="container-fluid page-body-wrapper">
@@ -122,6 +132,7 @@
 <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
 <script src="{{ asset('js/template.js') }}"></script>
+<script src="{{ asset('js/off-canvas.js') }}"></script>
 <script src="{{ asset('js/select2.js') }}"></script>
 <script src="{{ asset('js/settings.js') }}"></script>
 <script src="{{ asset('js/todolist.js') }}"></script>

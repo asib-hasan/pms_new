@@ -1,7 +1,7 @@
 @extends('layout.sidebar')
 @section('content')
     <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper pl-0">
             <div class="col-lg-12">
                 @include('partials.alerts')
                 <div class="card">

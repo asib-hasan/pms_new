@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     @include('partials.alerts')
                     <div class="card">
-                        <div class="card-header">System Users Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
+                        <div class="card-header font-weight-bold">System Users Information <a href="javascript:void(0)" data-toggle="modal" data-target="#add_user" class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-plus-circle"></i> Add New</a>&nbsp;<a href="javascript:void(0)" data-toggle="modal" data-target="#search" class="btn btn-success btn-xs btn-rounded" style="background: black;border: 1px solid black"><i class="fa fa-search"></i> Advance Search</a></div>
                         <div id="search" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
