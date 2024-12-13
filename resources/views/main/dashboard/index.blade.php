@@ -109,16 +109,17 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <div>
+                                                                    <div class="table-responsive">
                                                                         @php
                                                                             $customer = \App\Models\CustomerWiseOrder::where('cwo_order_id',$order->order_info_track_no)->first();
                                                                         @endphp
                                                                         @if($customer)
-                                                                            <h4 style="color: black;font-weight: bold">
-                                                                                Customer Information</h4>
                                                                             <table class="table table-bordered">
                                                                                 <thead>
-                                                                                <tr>
+                                                                                <tr style="background-color: #ddd">
+                                                                                    <th colspan="2">Customer Information</th>
+                                                                                </tr>
+                                                                                <tr style="background-color: #ddd">
                                                                                     <th>Name</th>
                                                                                     <th>Phone</th>
                                                                                 </tr>
@@ -132,16 +133,18 @@
                                                                             </table>
                                                                         @endif
                                                                     </div>
-                                                                    <h4 style="color: black;font-weight: bold">Order Details</h4>
                                                                     <div class="table-responsive">
                                                                         <table class="table table-bordered table-hover">
                                                                             <thead>
-                                                                            <tr style="background-color: #ddd">
-                                                                                <th>Item Name</th>
-                                                                                <th>Price</th>
-                                                                                <th>Qty</th>
-                                                                                <th>Total</th>
-                                                                            </tr>
+                                                                                <tr style="background-color: #ddd">
+                                                                                    <th colspan="4">Order Details</th>
+                                                                                </tr>
+                                                                                <tr style="background-color: #ddd">
+                                                                                    <th>Item Name</th>
+                                                                                    <th>Price</th>
+                                                                                    <th>Qty</th>
+                                                                                    <th>Total</th>
+                                                                                </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                             @php

@@ -75,7 +75,7 @@
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
-                                                                                        <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ $contact->contact_info_phone }}" placeholder="Enter phone" required />
+                                                                                        <input type="text" maxlength="11" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="contact_info_phone" value="{{ $contact->contact_info_phone }}" placeholder="Enter phone" required />
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
@@ -135,7 +135,7 @@
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <label for="contact_info_phone">Phone<b class="required_mark">*</b></label>
-                                                                        <input type="text" maxlength="11" class="form-control" name="contact_info_phone" value="{{ old('contact_info_phone') }}" placeholder="Enter phone" required />
+                                                                        <input type="text" maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="contact_info_phone" value="{{ old('contact_info_phone') }}" placeholder="Enter phone" required />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">

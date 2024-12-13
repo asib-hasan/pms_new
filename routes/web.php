@@ -69,6 +69,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('expense',[ExpenseController::class,'index']);
     Route::post('expense/store',[ExpenseController::class,'store']);
     Route::post('expense/update',[ExpenseController::class,'update']);
+    #expense
+    Route::get('achead',[ExpenseController::class,'index']);
+    Route::post('expense/store',[ExpenseController::class,'store']);
+    Route::post('expense/update',[ExpenseController::class,'update']);
     #pos
     Route::get('pos',[SalesController::class,'index']);
     Route::post('view/pos',[SalesController::class,'temp_order']);

@@ -204,10 +204,4 @@
     <script>
         $('#companies').addClass('active');
     </script>
-    <script>
-        var today = new Date();
-        today.setHours(today.getUTCHours() + 6);
-        document.getElementById('bp_date').value = today.toISOString().split('T')[0];
-    </script>
-
 @endsection

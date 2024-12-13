@@ -24,4 +24,6 @@ class Categories extends Model
     protected $guarded = [
         'item_category_id',
     ];
+
+    protected $primaryKey = 'item_category_id';
 }

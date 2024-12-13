@@ -89,7 +89,7 @@
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <label for="customer_phone">Phone<b class="required_mark">*</b></label>
-                                                                                        <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ $customer->customer_phone }}" placeholder="Enter phone" required />
+                                                                                        <input type="text" maxlength="11" class="form-control" name="customer_phone" value="{{ $customer->customer_phone }}" placeholder="Enter phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required />
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
@@ -138,7 +138,7 @@
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <label for="pay_amount">Enter Amount<b class="required_mark">*</b></label>
-                                                                                        <input type="text" maxlength="100" class="form-control" name="pay_amount" value="" placeholder="Enter amount" required />
+                                                                                        <input type="text" maxlength="20" class="form-control" name="pay_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter amount" required />
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="pay_amount">Date<b class="required_mark">*</b></label>

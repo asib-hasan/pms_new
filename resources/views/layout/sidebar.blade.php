@@ -21,6 +21,12 @@
     .content-wrapper{
         padding: 1rem 1rem;
     }
+    .card-header:first-child{
+        background-color: #c5d6ff;
+    }
+    .card .card-body {
+        padding: 0.8rem 0.8rem;
+    }
 </style>
 <body>
 <div class="container-scroller">
@@ -37,7 +43,7 @@
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" style="font-weight: bold;color: black" href="{{ url('account/settings') }}"><i class="fa fa-user-plus"></i> Account Settings</a>
+                    <a class="nav-link" style="font-weight: bold;color: black" href="{{ url('account/settings') }}"><i class="fa fa-gear"></i> Account Settings</a>
                     <a class="nav-link count-indicator" href="{{ url('logout') }}">
                         <i class="fas fa-sign-out ml-3 font-weight-bold"></i>
                     </a>
@@ -81,6 +87,12 @@
                     <a class="nav-link" href="{{ url('companies') }}">
                         <i class="fa fa-building menu-icon"></i>
                         <span class="menu-title">Companies</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="customers">
+                    <a class="nav-link" href="{{ url('achead') }}">
+                        <i class="fa fa-credit-card menu-icon"></i>
+                        <span class="menu-title">Account Head</span>
                     </a>
                 </li>
                 <li class="nav-item" id="items">
