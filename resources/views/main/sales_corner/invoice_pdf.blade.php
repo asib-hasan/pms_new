@@ -71,7 +71,7 @@
             <td style="border:1px solid black;padding:5px 5px">{{ $order->item_info->item_name ?? '' }}</td>
             <td style="border:1px solid black;padding:5px 5px">{{ $price = number_format($order->order_details_item_sell_price, 2) }}</td>
             <td style="border:1px solid black;padding:5px 5px">{{ $qty = $order->order_details_item_qty }}</td>
-            <td style="border:1px solid black;padding:5px 5px">{{ number_format($qty*$price,2) }}</td>
+            <td style="border:1px solid black;padding:5px 5px">{{ number_format($qty*$order->order_details_item_sell_price,2) }}</td>
         </tr>
     @endforeach
     <tr>

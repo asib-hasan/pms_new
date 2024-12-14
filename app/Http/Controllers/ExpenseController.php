@@ -24,7 +24,7 @@ class ExpenseController extends Controller
                 $total = Expense::where('expense_head_id',$id)->sum('expense_amount');
             }
             else{
-                $expense_list = Expense::orderByDesc('expense_id')->paginate(2);
+                $expense_list = Expense::orderByDesc('expense_id')->paginate(15);
                 $total = Expense::sum('expense_amount');
             }
             $expense_head_list = AccHead::where('status','Active')->get();

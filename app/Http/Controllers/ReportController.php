@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Expense;
 use App\Models\OrderDetails;
+use App\Models\OrderInfo;
 use App\Models\StoreInfo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -26,8 +27,9 @@ class ReportController extends Controller
                 $end_date = $request->end_date;
                 $flag = 1;
                 $order_list = OrderDetails::whereBetween('order_details_date', [$start_date, $end_date])->get();
-                $gross_amount = OrderDetails::whereBetween('order_details_date', [$start_date, $end_date])->sum('order_details_item_sell_price');
-                $gross_profit = OrderDetails::whereBetween('order_details_date', [$start_date, $end_date])->sum('order_details_item_profit');
+                $gross_amount = OrderInfo::whereBetween('order_info_date', [$start_date, $end_date])->sum('order_info_total');
+                $discount_amount = OrderInfo::whereBetween('order_info_date', [$start_date, $end_date])->sum('order_info_discount');
+                $gross_profit = OrderDetails::whereBetween('order_details_date', [$start_date, $end_date])->sum('order_details_item_profit') - $discount_amount;
             }
             return view('main.report.sales_report', compact('start_date','end_date','gross_amount','gross_profit','flag','order_list'));
         }

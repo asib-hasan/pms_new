@@ -101,9 +101,8 @@
                                             <div class="modal-content">
                                                 <form method="POST" action="">
                                                     <div class="card mt-3">
-                                                        <div class="card-header font-weight-bold">Order History -
-                                                            Invoice ID -
-                                                            <span style="color: maroon">{{ $order->order_info_track_no }}</span>
+                                                        <div class="card-header font-weight-bold">Invoice ID -
+                                                            <a href="{{ url('print/pos/invoice?ot=' . $order->order_info_track_no) }}" style="color: maroon" target="_blank">{{ $order->order_info_track_no }}</a>
                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="card-body">

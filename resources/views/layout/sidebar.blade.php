@@ -34,7 +34,9 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo mr-5" href="{{ url('dashboard') }}">
                 <img src="{{ asset('images/logo.png') }}" height="auto" width="70px" class="mr-2" alt="logo"/>
-                <a class="navbar-brand brand-logo-mini" href="{{ url('dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"/></a>
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="{{ url('dashboard') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="logo"/>
             </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">

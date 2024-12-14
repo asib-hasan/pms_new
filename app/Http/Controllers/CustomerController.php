@@ -140,7 +140,7 @@ class CustomerController extends Controller
             if($customer_info == ""){
                 return redirect('/customer')->with('error', 'Customer information not found');
             }
-            $customer_order_list = CustomerWiseOrder::orderByDesc('cwo_id')->get();
+            $customer_order_list = CustomerWiseOrder::where('cwo_customer_id',$id)->orderByDesc('cwo_id')->get();
             return view('main.customer.order', compact('customer_order_list','customer_info'));
         }
         else{
@@ -154,7 +154,7 @@ class CustomerController extends Controller
             if($customer_info == ""){
                 return redirect('/customer')->with('error', 'Customer information not found');
             }
-            $customer_paid_list = DuePaid::orderByDesc('dp_id')->paginate(15)->appends('id',$id);
+            $customer_paid_list = DuePaid::where('dp_customer_id',$id)->orderByDesc('dp_id')->paginate(15)->appends('id',$id);
             return view('main.customer.payment_history', compact('customer_paid_list','customer_info'));
         }
         else{

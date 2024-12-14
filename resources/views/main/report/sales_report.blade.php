@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="col-md-9 text-right">
                                                 <span> Gross Sales </span>
-                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ $gross_amount }}</h3>
+                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ number_format($gross_amount,2) }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="col-md-9 text-right">
                                                 <span> Total Sales Profit </span>
-                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ $gross_profit }}</h3>
+                                                <h3 class="font-bold">{{ $currency }}&nbsp;{{ number_format($gross_profit,2) }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -72,15 +72,15 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr style="background-color: #ddd">
                                                 <th>Serial No</th>
                                                 <th>Item Name</th>
-                                                <th data-hide="phone">Sell Quantity</th>
-                                                <th data-hide="phone">Sell Price</th>
-                                                <th data-hide="phone">Total Amount</th>
-                                                <th data-hide="phone">Sell Date</th>
+                                                <th>Sell Quantity</th>
+                                                <th>Sell Price</th>
+                                                <th>Total Amount</th>
+                                                <th>Sell Date</th>
                                             </tr>
                                             </thead>
                                             <tbody>
