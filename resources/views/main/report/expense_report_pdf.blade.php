@@ -57,7 +57,7 @@
     @forelse ($expense_list AS $expense)
         <tr>
             <td style="border:1px solid black;padding:5px 5px">{{ $loop->index + 1 }}</td>
-            <td style="border:1px solid black;padding:5px 5px">{{ $expense->expense_criteria }}</td>
+            <td style="border:1px solid black;padding:5px 5px">{{ $expense->expense_head_info->name ?? '' }}</td>
             <td style="border:1px solid black;padding:5px 5px">{{ number_format($expense->expense_amount, 2) }}</td>
             <td style="border:1px solid black;padding:5px 5px">{{ $expense->expense_date }}</td>
         </tr>

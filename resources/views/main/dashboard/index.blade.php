@@ -46,7 +46,7 @@
                                 <div class="card card-tale">
                                     <div class="card-body">
                                         <p class="mb-4">Total Due Amount</p>
-                                        <p class="fs-30 mb-2">{{ $currency }}&nbsp;{{ 0 }}</p>
+                                        <p class="fs-30 mb-2">{{ $currency }}&nbsp;{{ $total_due }}</p>
                                     </div>
                                 </div>
                             </div>

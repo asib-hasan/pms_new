@@ -71,7 +71,7 @@
                                             @forelse($expense_list AS $expense)
                                             <tr>
                                                 <td>{{ $loop->index + 1 }}</td>
-                                                <td>{{ $expense->expense_criteria }}</td>
+                                                <td>{{ $expense->expense_head_info->name ?? '' }}</td>
                                                 <td>{{ $currency }} {{ $expense->expense_amount }}</td>
                                                 <td>{{ $expense->expense_date }}</td>
                                             </tr>

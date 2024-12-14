@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccHead;
 use App\Models\Categories;
 use App\Models\Expense;
 use Illuminate\Database\QueryException;
@@ -17,14 +18,17 @@ class ExpenseController extends Controller
     {
 
         try {
-            if($request->has('sk')){
-                $keyword = $request->sk;
-                $expense_list = Expense::where('expense_criteria', 'like', '%' . $keyword . '%')->paginate(20);
+            if($request->has('expense_head_id')){
+                $id = $request->expense_head_id;
+                $expense_list = Expense::where('expense_head_id',$id)->paginate(20);
+                $total = Expense::where('expense_head_id',$id)->sum('expense_amount');
             }
             else{
-                $expense_list = Expense::orderByDesc('expense_id')->paginate(15);
+                $expense_list = Expense::orderByDesc('expense_id')->paginate(2);
+                $total = Expense::sum('expense_amount');
             }
-            return view('main.expense.index', compact('expense_list'));
+            $expense_head_list = AccHead::where('status','Active')->get();
+            return view('main.expense.index', compact('expense_list','expense_head_list','total'));
         }
         catch (QueryException $ex){
             return redirect()->back()->with('error', 'Process failed for - ' . $ex->getMessage());
@@ -34,15 +38,13 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'expense_criteria' => 'required|max:100',
+            'expense_head_id' => 'required',
             'expense_amount' => 'required|numeric|min:0',
             'expense_date' => 'required|date',
         ];
 
         $messages = [
-            'expense_criteria.required' => 'Name required.',
-            'expense_criteria.max' => 'Name cannot exceed 100 characters.',
-            'expense_criteria.unique' => 'Name already exists.',
+            'expense_head_id.required' => 'Expense head required.',
             'expense_amount.required' => 'Amount required.',
             'expense_amount.min' => 'Amount should be greater than zero.',
             'expense_date.required' => 'Date required.',
@@ -58,7 +60,7 @@ class ExpenseController extends Controller
         try {
             DB::transaction(function () use ($request) {
                 Expense::insert([
-                    'expense_criteria' => $request->expense_criteria,
+                    'expense_head_id' => $request->expense_head_id,
                     'expense_amount' => $request->expense_amount,
                     'expense_date' => $request->expense_date,
                     'created_by' => Auth::user()->admin_id,
@@ -76,16 +78,14 @@ class ExpenseController extends Controller
 
         if($id > 0 && is_numeric($id)) {
             $rules = [
-                'expense_criteria' => 'required|max:100',
+                'expense_head_id' => 'required',
                 'expense_amount' => 'required|numeric|min:0',
                 'expense_date' => 'required|date',
             ];
 
 
             $messages = [
-                'expense_criteria.required' => 'Name required.',
-                'expense_criteria.max' => 'Name cannot exceed 100 characters.',
-                'expense_criteria.unique' => 'Name already exists.',
+                'expense_head_id.required' => 'Expense head required.',
                 'expense_amount.required' => 'Amount required.',
                 'expense_amount.min' => 'Amount should be greater than zero.',
                 'expense_date.required' => 'Date required.',
@@ -101,7 +101,7 @@ class ExpenseController extends Controller
             try {
                 DB::transaction(function () use ($request, $id) {
                     Expense::where('expense_id', $id)->update([
-                        'expense_criteria' => $request->expense_criteria,
+                        'expense_head_id' => $request->expense_head_id,
                         'expense_amount' => $request->expense_amount,
                         'expense_date' => $request->expense_date,
                         'updated_by' => Auth::user()->admin_id,

@@ -89,10 +89,10 @@
                         <span class="menu-title">Companies</span>
                     </a>
                 </li>
-                <li class="nav-item" id="customers">
+                <li class="nav-item" id="achead">
                     <a class="nav-link" href="{{ url('achead') }}">
                         <i class="fa fa-credit-card menu-icon"></i>
-                        <span class="menu-title">Account Head</span>
+                        <span class="menu-title">Expense Head</span>
                     </a>
                 </li>
                 <li class="nav-item" id="items">

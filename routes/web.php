@@ -13,6 +13,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SystemSettingsController;
 use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\AccHeadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[AuthController::class,'index'])->name('login');
@@ -69,10 +70,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('expense',[ExpenseController::class,'index']);
     Route::post('expense/store',[ExpenseController::class,'store']);
     Route::post('expense/update',[ExpenseController::class,'update']);
-    #expense
-    Route::get('achead',[ExpenseController::class,'index']);
-    Route::post('expense/store',[ExpenseController::class,'store']);
-    Route::post('expense/update',[ExpenseController::class,'update']);
+    #account head
+    Route::get('achead',[AccHeadController::class,'index']);
+    Route::post('achead/store',[AccHeadController::class,'store']);
+    Route::post('achead/update',[AccHeadController::class,'update']);
     #pos
     Route::get('pos',[SalesController::class,'index']);
     Route::post('view/pos',[SalesController::class,'temp_order']);

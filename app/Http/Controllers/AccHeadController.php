@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Expense;
+use App\Models\AccHead;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AccHeadController extends Controller
 {
@@ -17,12 +18,12 @@ class AccHeadController extends Controller
         try {
             if($request->has('sk')){
                 $keyword = $request->sk;
-                $expense_list = Expense::where('expense_criteria', 'like', '%' . $keyword . '%')->paginate(20);
+                $expense_head_list = AccHead::where('name', 'like', '%' . $keyword . '%')->paginate(20);
             }
             else{
-                $expense_list = Expense::orderByDesc('expense_id')->paginate(15);
+                $expense_head_list = AccHead::orderByDesc('id')->paginate(15);
             }
-            return view('main.expense.index', compact('expense_list'));
+            return view('main.ac_head.index', compact('expense_head_list'));
         }
         catch (QueryException $ex){
             return redirect()->back()->with('error', 'Process failed for - ' . $ex->getMessage());
@@ -32,19 +33,15 @@ class AccHeadController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'expense_criteria' => 'required|max:100',
-            'expense_amount' => 'required|numeric|min:0',
-            'expense_date' => 'required|date',
+            'name' => 'required|max:100|unique:ac_head',
+            'status' => 'required',
         ];
 
         $messages = [
-            'expense_criteria.required' => 'Name required.',
-            'expense_criteria.max' => 'Name cannot exceed 100 characters.',
-            'expense_criteria.unique' => 'Name already exists.',
-            'expense_amount.required' => 'Amount required.',
-            'expense_amount.min' => 'Amount should be greater than zero.',
-            'expense_date.required' => 'Date required.',
-            'expense_date.date' => 'Invalid date format.',
+            'name.required' => 'Name required.',
+            'name.max' => 'Name cannot exceed 100 characters.',
+            'name.unique' => 'Name already exists.',
+            'status.required' => 'Status required.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -55,14 +52,13 @@ class AccHeadController extends Controller
 
         try {
             DB::transaction(function () use ($request) {
-                Expense::insert([
-                    'expense_criteria' => $request->expense_criteria,
-                    'expense_amount' => $request->expense_amount,
-                    'expense_date' => $request->expense_date,
+                AccHead::insert([
+                    'name' => $request->name,
+                    'status' => $request->status,
                     'created_by' => Auth::user()->admin_id,
                 ]);
             });
-            return redirect()->back()->with('success', 'Expense information saved successfully');
+            return redirect()->back()->with('success', 'Account Head information saved successfully');
         } catch (QueryException $e) {
             return redirect()->back()->with('error', 'Something went wrong. Please try again.' . $e->getMessage());
         }
@@ -70,24 +66,20 @@ class AccHeadController extends Controller
 
     public function update(Request $request)
     {
-        $id = $request->expense_id;
+        $id = $request->id;
 
-        if($id > 0 && is_numeric($id)) {
+        if ($id > 0 && is_numeric($id)) {
             $rules = [
-                'expense_criteria' => 'required|max:100',
-                'expense_amount' => 'required|numeric|min:0',
-                'expense_date' => 'required|date',
+                'name' => ['required', 'max:100', Rule::unique('ac_head')->ignore($id, 'id')],
+                'status' => 'required',
             ];
 
 
             $messages = [
-                'expense_criteria.required' => 'Name required.',
-                'expense_criteria.max' => 'Name cannot exceed 100 characters.',
-                'expense_criteria.unique' => 'Name already exists.',
-                'expense_amount.required' => 'Amount required.',
-                'expense_amount.min' => 'Amount should be greater than zero.',
-                'expense_date.required' => 'Date required.',
-                'expense_date.date' => 'Invalid date format.',
+                'name.required' => 'Name required.',
+                'name.max' => 'Name cannot exceed 100 characters.',
+                'name.unique' => 'Name already exists.',
+                'status.required' => 'Status required.',
             ];
 
             $validator = Validator::make($request->all(), $rules, $messages);
@@ -98,19 +90,18 @@ class AccHeadController extends Controller
 
             try {
                 DB::transaction(function () use ($request, $id) {
-                    Expense::where('expense_id', $id)->update([
-                        'expense_criteria' => $request->expense_criteria,
-                        'expense_amount' => $request->expense_amount,
-                        'expense_date' => $request->expense_date,
+                    AccHead::where('id', $id)->update([
+                        'name' => $request->name,
+                        'status' => $request->status,
                         'updated_by' => Auth::user()->admin_id,
                     ]);
                 });
-                return redirect()->back()->with('success', 'Expense information updated successfully');
+                return redirect()->back()->with('success', 'Account Head information updated successfully');
             } catch (QueryException $e) {
                 return redirect()->back()->with('error', 'Something went wrong. Please try again.' . $e->getMessage());
             }
+        } else {
+            return redirect()->back()->with('error', 'Invalid parameter or request');
         }
-        else{
-            return redirect()->back()->with('error','Invalid parameter or request');
-        }
+    }
 }

@@ -28,4 +28,8 @@ class Expense extends Model
 
     protected $primaryKey = 'expense_id';
 
+    public function expense_head_info(){
+        return $this->belongsTo(AccHead::class, 'expense_head_id', 'id');
+    }
+
 }
